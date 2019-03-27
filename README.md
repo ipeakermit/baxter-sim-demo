@@ -23,6 +23,7 @@ docker exec -it <containername> bash
 At the prompt, do:
 
 source ./rosenv.sh
+
 ./simstart
 
 Finally, to see the simulation window, run a browser on the same machine, with the URL: http://localhost:8080/vnc_auto.html
