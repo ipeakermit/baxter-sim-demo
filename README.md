@@ -2,11 +2,19 @@
 
 Requires install of docker-ce on your platform to build and run container.
 
-Once started, do:
+Build using:
+
+./build
+
+Run using:
+
+./run
+
+This will start two containers in the background: an X11 display container and a Baxter simulator. Once started, do:
 
 docker ps
 
-to find out the name of the docker container running the vxlab-baxter2 image
+to find out the name of the docker container running the Baxter simulator (vxlab-baxter2) image
 
 Next, do:
 
