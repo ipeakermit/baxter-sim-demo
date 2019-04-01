@@ -46,7 +46,8 @@ ENV PYTHONIOENCODING UTF-8
 RUN catkin config --extend /opt/ros/${ROS_DISTRO} --cmake-args -DCMAKE_BUILD_TYPE=Release && \
     # Status rate is limited so that just enough info is shown to keep Docker from timing out, but not too much
     # such that the Docker log gets too long (another form of timeout)
-    catkin build --jobs 1 --limit-status-rate 0.001 --no-notify
+    # changed --jobs flag to 4 to speed up the build process
+    catkin build --jobs 4 --limit-status-rate 0.001 --no-notify
 
 #
 # VXLab extensions...

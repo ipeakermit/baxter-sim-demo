@@ -18,7 +18,7 @@ to find out the name of the docker container running the Baxter simulator (vxlab
 
 Next, do:
 
-docker exec -it <containername> bash
+docker exec -it vxlab-baxter2 bash
 
 At the prompt, do:
 
