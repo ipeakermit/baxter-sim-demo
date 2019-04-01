@@ -58,6 +58,7 @@ COPY sources.list.mirrors /etc/apt/sources.list
 RUN apt-get update && apt-get -y install vim-tiny
 
 ADD baxter.sh baxter.sh
+RUN chmod +x baxter.sh
 #ADD vncpasswd vncpasswd
 
 #RUN groupadd -r vxlab && adduser --disabled-password --ingroup vxlab --gecos '' vxlab
