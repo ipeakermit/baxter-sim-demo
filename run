@@ -1,9 +1,10 @@
-docker network create x11
+#docker network create x11
+docker network create vxlab --subnet 10.42.170.0/24
 
 docker rm -f novnc
-docker run --network x11 --name novnc --rm -p 8080:8080 theasp/novnc 2>&1 > x11.log &
+docker run --network vxlab --name novnc --rm -p 8080:8080 theasp/novnc 2>&1 > x11.log &
 echo Waiting for X11 desktop
 
 sleep 2
 docker rm -f vxlab-baxter2
-docker run --network x11 -d -e DISPLAY=novnc:0 vxlab-baxter2
+docker run --network vxlab -it -e DISPLAY=novnc:0 vxlab-baxter2
