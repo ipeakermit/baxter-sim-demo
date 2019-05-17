@@ -17,6 +17,20 @@ RUN wstool init . && \
     wstool merge https://raw.githubusercontent.com/vicariousinc/baxter_simulator/${ROS_DISTRO}-gazebo7/baxter_simulator.rosinstall && \
     wstool update
 
+# LAST KNOWN GOOD - Baxter component git commits
+#baxter
+#commit d2f2ebd1166b944096febc8a3b014a5d9d810e64
+#baxter_common
+#commit 15825273de1fe6b8b1b2c6069692d767c69ff503
+#baxter_examples
+#commit 033756294b59f038869d97e59b5d9b28fe64d9e5
+#baxter_interface
+#commit aea70d96eb0fb0a99084dcb02d467785dde8fe52
+#baxter_simulator
+#commit 762854f16ce09e152cfab065bd70471ff7051657
+#baxter_tools
+#commit 0da6ea300e1f8050ffe8d78421dcc6b8fec983a2
+
 # Update apt-get because previous images clear this cache
 # Commands are combined in single RUN statement with "apt/lists" folder removal to reduce image size
 RUN apt-get -qq update && \
