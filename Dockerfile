@@ -2,6 +2,7 @@
 # vicariousinc/baxter-simulator:kinetic
 # Run simulated Baxter in Gazebo
 
+#FROM osrf/ros:kinetic-desktop-full-jessie
 FROM osrf/ros:kinetic-desktop-full
 MAINTAINER Dave Coleman dave@dav.ee
 
@@ -39,14 +40,24 @@ RUN apt-get -qq update && \
         # Some source builds require a package.xml be downloaded via wget from an external location
         wget \
         # Required for rosdep command
-        sudo \
+        sudo
+
+RUN sudo apt-key del 421C365BD9FF1F717815A3895523BAEEB01FA116
+RUN sudo -E apt-key adv --keyserver 'hkp://keyserver.ubuntu.com:80' --recv-key C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654
+
+RUN apt-get -qq update && \
+    apt -qq install -y \
         # Required for installing dependencies
         python-rosdep \
         # Preferred build tool
-        python-catkin-tools && \
+        python-catkin-tools
     # Download all dependencies
+
+RUN apt -qq update && apt -y dist-upgrade
+
+RUN apt -qq update && \
     rosdep update && \
-    rosdep install -y --from-paths . --ignore-src --rosdistro ${ROS_DISTRO} --as-root=apt:false && \
+    rosdep install -y --from-paths . --ignore-src --rosdistro ${ROS_DISTRO} --as-root=apt:false --os=ubuntu:xenial && \
     # Clear apt-cache to reduce image size
     rm -rf /var/lib/apt/lists/*
 
@@ -80,6 +91,7 @@ RUN chmod +x baxter.sh
 
 
 WORKDIR /root
+ADD vxlab.world vxlab.world
 ADD simstart simstart
 RUN chmod +x simstart
 COPY rosenv.sh rosenv.sh
