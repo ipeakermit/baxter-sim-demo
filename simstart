@@ -1,3 +1,4 @@
 #!/bin/bash
+cp vxlab.world ./ws_baxter/src/baxter_simulator/baxter_gazebo/worlds/baxter.world
 roslaunch baxter_gazebo baxter_world.launch
 #roslaunch baxter_gazebo vxlab_world.launch
